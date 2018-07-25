@@ -12,8 +12,8 @@ PATH=/sbin:/bin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 ./partitionDisk.sh
 
 # clear out any old md superblock data
-mdadm --zero-superblock --force --verbose ${rootfsDisk1} > /dev/null
-mdadm --zero-superblock --force --verbose ${rootfsDisk2} > /dev/null
+mdadm --zero-superblock --force --verbose ${rootfsDisk1} > /dev/sda2
+mdadm --zero-superblock --force --verbose ${rootfsDisk2} > /dev/sda2
 sync
 mdadm --create ${rootfsDevice} --verbose --raid-devices=2 --level=raid1 --run ${rootfsDisk1} missing
 mdadm --wait ${rootfsDevice}
